@@ -1,4 +1,8 @@
-import numpy as np
+import os
+if os.environ.get("DP_NUMPY", "1") == "0":
+    import numpy as np
+else:
+    import dp_numpy as np
 from autograd.extend import VSpace
 from autograd.builtins import NamedTupleVSpace
 

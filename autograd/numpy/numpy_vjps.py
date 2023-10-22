@@ -1,7 +1,11 @@
 from __future__ import absolute_import
 from six import string_types
 from functools import partial
-import numpy as onp
+import os
+if os.environ.get("DP_NUMPY", "1") == "0":
+    import numpy as onp
+else:
+    import dp_numpy as onp
 from ..util import func
 from . import numpy_wrapper as anp
 from .numpy_boxes import ArrayBox

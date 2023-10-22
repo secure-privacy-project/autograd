@@ -2,7 +2,11 @@ from __future__ import absolute_import
 import types
 import warnings
 from autograd.extend import primitive, notrace_primitive
-import numpy as _np
+import os
+if os.environ.get("DP_NUMPY", "1") == "0":
+    import numpy as _np
+else:
+    import dp_numpy as _np
 import autograd.builtins as builtins
 from numpy.core.einsumfunc import _parse_einsum_input
 

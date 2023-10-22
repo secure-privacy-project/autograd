@@ -1,5 +1,9 @@
 from __future__ import absolute_import
-import numpy as np
+import os
+if os.environ.get("DP_NUMPY", "1") == "0":
+    import numpy as np
+else:
+    import dp_numpy as np
 from autograd.extend import Box, primitive
 from autograd.builtins import SequenceBox
 from . import numpy_wrapper as anp
